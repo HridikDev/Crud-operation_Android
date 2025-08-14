@@ -24,6 +24,7 @@ public class MainActivity3 extends AppCompatActivity {
     EditText pedt;
     Button uubtn;
 
+    Button vbtn;
     SQLiteDatabase db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,7 @@ public class MainActivity3 extends AppCompatActivity {
         nedt=findViewById(R.id.editTextText3);
         pedt=findViewById(R.id.editTextText4);
         uubtn=findViewById(R.id.button5);
+        vbtn=findViewById(R.id.button6);
         db=openOrCreateDatabase("studentdb",MODE_PRIVATE,null);
         db.execSQL("create table if not exists student (id INTEGER primary key AUTOINCREMENT,name text,email text,pass text)");
 
@@ -47,7 +49,13 @@ public class MainActivity3 extends AppCompatActivity {
                 String querry="update student set name ='" + name + "',pass='" + pass + "' where id=" + id;
                 db.execSQL(querry);
                 Toast.makeText(MainActivity3.this, "Updated Sucessfull" , Toast.LENGTH_SHORT).show();
-                Intent intent3=new Intent(MainActivity3.this,MainActivity2.class);
+
+            }
+        });
+        vbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent3=new Intent(MainActivity3.this,MainActivity4.class);
                 startActivity(intent3);
             }
         });
